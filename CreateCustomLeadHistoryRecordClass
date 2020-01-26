@@ -1,0 +1,28 @@
+public class CreateCustomLeadHistoryRecordClass 
+{
+    public static integer historycount = 0;
+    @future
+    public static void createLeadHistoryRecord(set<id> leads)
+    {
+        List<Lead_History__c> listLeadHistRec = new List<Lead_History__c>();
+        List<LeadHistory> getleadHistoryResults = [Select Lead.Name,lead.ConvertedAccountId,CreatedById,
+        CreatedDate,Field,IsDeleted,LeadId,NewValue,OldValue 
+        from LeadHistory where LeadId in : leads];
+        system.debug(leads+'===>'+getleadHistoryResults );
+        for(LeadHistory forEveryLeadHistoryRec : getleadHistoryResults)
+        {
+            Lead_History__c createNewLeadHistory = new Lead_History__c();
+            createNewLeadHistory.Name = forEveryLeadHistoryRec.lead.Name;
+            createNewLeadHistory.Field__c = String.valueof(forEveryLeadHistoryRec.field);
+            createNewLeadHistory.OldValue__c = (String) forEveryLeadHistoryRec.OldValue;
+            createNewLeadHistory.NewValue__c = (String) forEveryLeadHistoryRec.NewValue;
+            createNewLeadHistory.LeadId__c = forEveryLeadHistoryRec.LeadId;
+            createNewLeadHistory.Account__c = forEveryLeadHistoryRec.lead.ConvertedAccountId;
+            listLeadHistRec.add(createNewLeadHistory);
+            system.debug('listLeadHistRec ' + listLeadHistRec);
+        }   
+        insert listLeadHistRec;
+        system.debug('listLeadHistRec '+listLeadHistRec);
+    
+    }
+}
