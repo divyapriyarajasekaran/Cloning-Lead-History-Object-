@@ -1,0 +1,19 @@
+trigger CreatesCustomLeadHistoryRecordTrigger on Lead ( after update) 
+{
+    set<id> leadids = new set<id>();
+    CreateCustomLeadHistoryRecordClass.historycount++;
+    for(Lead leadLoop : Trigger.new)
+    {
+        system.debug('entering for ');
+        if(leadLoop.isConverted ) //&& leadLoop.ConvertedAccount!=null
+        { 
+            System.debug('Entering if ');
+            leadids.add(leadLoop.id);
+              
+        }  
+    }
+    if(!leadids.isempty() && CreateCustomLeadHistoryRecordClass.historycount > 1){
+        CreateCustomLeadHistoryRecordClass.createLeadHistoryRecord(leadids);  
+    }
+    
+}
