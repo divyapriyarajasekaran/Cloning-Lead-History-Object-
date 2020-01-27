@@ -4,11 +4,11 @@ private class CreatesCustomLeadHistoryRecordClassTest {
     @isTest
     public static void leadHistoryCreationForOneLead()
     {
-        Lead[] newLead = TestDataFactoryForLeadHistory.createLeads(1);
+        Lead[] newLead = TestDataFactory.createLeads(1);
         system.debug('New lead created is :' + newLead[0]);
-        Lead[] updateLead = TestDataFactoryForLeadHistory.updateLeads(newLead);
+        Lead[] updateLead = TestDataFactory.updateLeads(newLead);
         system.debug('Updated lead is :' +updateLead[0]);
-        Lead[] leadconvert =  TestDataFactoryForLeadHistory.convertLeads(updateLead);
+        Lead[] leadconvert =  TestDataFactory.convertLeads(updateLead);
         system.debug('Converted lead is:' + leadconvert);
         
         Set<Id> setLeads = new set<Id>();
@@ -21,11 +21,11 @@ private class CreatesCustomLeadHistoryRecordClassTest {
     public static void leadHistoryCreationInBulk()
     {
         Test.startTest();
-        	Lead[] newLead = TestDataFactoryForLeadHistory.createLeads(2);
+        	Lead[] newLead = TestDataFactory.createLeads(2);
         	system.debug('New lead created is :' + newLead[0]);
-        	Lead[] updateLead = TestDataFactoryForLeadHistory.updateLeads(newLead);
+        	Lead[] updateLead = TestDataFactory.updateLeads(newLead);
         	system.debug('Updated lead is :' +updateLead[0]);
-        	Lead[] leadconvert =  TestDataFactoryForLeadHistory.convertLeads(updateLead);
+        	Lead[] leadconvert =  TestDataFactory.convertLeads(updateLead);
         	system.debug('Converted lead is:' + leadconvert);
         
         	Set<Id> setLeads = new set<Id>();
@@ -41,11 +41,11 @@ private class CreatesCustomLeadHistoryRecordClassTest {
         User salesConsltantUser =[select id from User where ProfileId = '00e4J000001LdNb' and IsActive=true limit 1];
         System.runAs(salesConsltantUser)
         {
-            Lead[] newLead = TestDataFactoryForLeadHistory.createLeads(1);
+            Lead[] newLead = TestDataFactory.createLeads(1);
             system.debug('New lead created is :' + newLead[0]);
-            Lead[] updateLead = TestDataFactoryForLeadHistory.updateLeads(newLead);
+            Lead[] updateLead = TestDataFactory.updateLeads(newLead);
             system.debug('Updated lead is :' +updateLead[0]);
-            Lead[] leadconvert =  TestDataFactoryForLeadHistory.convertLeads(updateLead);
+            Lead[] leadconvert =  TestDataFactory.convertLeads(updateLead);
             system.debug('Converted lead is:' + leadconvert);
             
             Set<Id> setLeads = new set<Id>();
@@ -61,11 +61,11 @@ private class CreatesCustomLeadHistoryRecordClassTest {
         User salesConsltantUser =[select id from User where ProfileId = '00e4J000001LdNb' and IsActive=true limit 1];
         System.runAs(salesConsltantUser)
         {
-            Lead[] newLead = TestDataFactoryForLeadHistory.createLeads(2);
+            Lead[] newLead = TestDataFactory.createLeads(2);
             system.debug('New lead created is :' + newLead[0]);
-            Lead[] updateLead = TestDataFactoryForLeadHistory.updateLeads(newLead);
+            Lead[] updateLead = TestDataFactory.updateLeads(newLead);
             system.debug('Updated lead is :' +updateLead[0]);
-            Lead[] leadconvert =  TestDataFactoryForLeadHistory.convertLeads(updateLead);
+            Lead[] leadconvert =  TestDataFactory.convertLeads(updateLead);
             system.debug('Converted lead is:' + leadconvert);
             
             Set<Id> setLeads = new set<Id>();
