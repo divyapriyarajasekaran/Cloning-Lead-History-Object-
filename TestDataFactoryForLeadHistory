@@ -2,7 +2,7 @@
 * Description : Test data creation purpose only. 
 */
 @isTest
-public class TestDataFactoryForLeadHistory {
+public class TestDataFactory  {
     
     static List<Lead> lstLead = new List<Lead>();
     Static Lead createLead;
