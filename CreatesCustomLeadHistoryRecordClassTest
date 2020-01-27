@@ -38,7 +38,7 @@ private class CreatesCustomLeadHistoryRecordClassTest {
     @isTest
     public static void leadHistoryCreationSalesUserForOneLead()
     {
-        User salesConsltantUser =[select id from User where ProfileId = '00e4J000001LdNb' and IsActive=true limit 1];
+        User salesConsltantUser =[select id from User where Profile.Name = '<Name of the profile>' and IsActive=true limit 1];
         System.runAs(salesConsltantUser)
         {
             Lead[] newLead = TestDataFactory.createLeads(1);
@@ -58,7 +58,7 @@ private class CreatesCustomLeadHistoryRecordClassTest {
     @isTest
     public static void leadHistoryCreationSalesUserForBulkLead()
     {
-        User salesConsltantUser =[select id from User where ProfileId = '00e4J000001LdNb' and IsActive=true limit 1];
+        User salesConsltantUser =[select id from User where Profile.Name = '<Name of the profile>' and IsActive=true limit 1];
         System.runAs(salesConsltantUser)
         {
             Lead[] newLead = TestDataFactory.createLeads(2);
