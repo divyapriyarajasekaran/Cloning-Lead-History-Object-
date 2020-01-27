@@ -1,6 +1,6 @@
 /*
- * Description : Test data creation purpose only. 
- */
+* Description : Test data creation purpose only. 
+*/
 @isTest
 public class TestDataFactoryForLeadHistory {
     
@@ -45,14 +45,14 @@ public class TestDataFactoryForLeadHistory {
     public static List<Lead> convertLeads(List<lead> convertLead)
     {
         LeadStatus convertStatus = [Select Id, MasterLabel from LeadStatus where isConverted =true];
-
-            Database.LeadConvert lc = new Database.LeadConvert();
-            lc.setLeadId(convertLead[0].id);
-            lc.setConvertedStatus(convertStatus.MasterLabel);
-            
-            Database.LeadConvertResult lcr = Database.convertLead(lc);
-            System.assert(lcr.isSuccess());
-
+        
+        Database.LeadConvert lc = new Database.LeadConvert();
+        lc.setLeadId(convertLead[0].id);
+        lc.setConvertedStatus(convertStatus.MasterLabel);
+        
+        Database.LeadConvertResult lcr = Database.convertLead(lc);
+        System.assert(lcr.isSuccess());
+        
         return convertLead;
     }
 }
