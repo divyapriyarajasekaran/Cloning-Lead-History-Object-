@@ -1,0 +1,19 @@
+@isTest
+private class CreatesCustomLeadHistoryRecordClassTest {
+        
+    @isTest
+    public static void createAndConvertLead()
+    {
+        Lead[] newLead = TestDataFactoryForLeadHistory.createLeads(1);
+        system.debug('New lead created is :' + newLead[0]);
+        Lead[] updateLead = TestDataFactoryForLeadHistory.updateLeads(newLead);
+        system.debug('Updated lead is :' +updateLead[0]);
+        Lead[] leadconvert =  TestDataFactoryForLeadHistory.convertLeads(updateLead);
+        system.debug('Converted lead is:' + leadconvert);
+        
+        Set<Id> setLeads = new set<Id>();
+        setLeads.add(leadconvert[0].id);
+        
+        CreateCustomLeadHistoryRecordClass.createLeadHistoryRecord(setLeads);
+    }
+}
