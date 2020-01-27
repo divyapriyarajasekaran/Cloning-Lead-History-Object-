@@ -1,0 +1,50 @@
+@isTest
+public class TestDataFactoryForLeadHistory {
+    
+	static List<Lead> lstLead = new List<Lead>();
+    Static Lead createLead;
+    
+    public static List<Lead> createLeads(Integer numLeads)
+    {
+        for(Integer i=0; i<numLeads; i++)
+        {
+            createLead = new Lead();
+            createLead.LastName = 'Test' +i;
+            createLead.LeadSource = 'Radio';
+            createLead.Status__c = 'New Lead';
+            createLead.Status = 'New Lead';
+            lstLead.add(createLead);
+            system.debug('lst of lead before insertion '+ lstLead);
+        }        
+        insert lstLead;
+        
+        system.debug('lst of lead after insertion ' + lstLead);
+        
+        return lstLead;
+    }
+    
+    public static list<Lead> updateLeads(List<lead> leadLst)
+    {
+        for(Lead l :leadLst )
+        {
+            l.leadSource = 'Client Referral';
+        }
+        update leadLst;
+        return leadLst;
+    }
+    
+    public static List<Lead> convertLeads(List<lead> convertLead)
+    {
+        LeadStatus convertStatus = [Select Id, MasterLabel from LeadStatus where isConverted =true];
+        for(Integer i=0; i<convertLead.size() ; i++)
+        {
+            Database.LeadConvert lc = new Database.LeadConvert();
+            lc.setLeadId(convertLead[i].id);
+            lc.setConvertedStatus(convertStatus.MasterLabel);
+            
+            Database.LeadConvertResult lcr = Database.convertLead(lc);
+            System.assert(lcr.isSuccess());
+        }
+        return convertLead;
+    }
+}
